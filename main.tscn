@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://fh8sf8nyuy14"]
+[gd_scene load_steps=4 format=3 uid="uid://fh8sf8nyuy14"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_411yu"]
 [ext_resource type="PackedScene" uid="uid://bdfo216a617rc" path="res://beings/player.tscn" id="2_4vytu"]
+[ext_resource type="PackedScene" uid="uid://b2q033821e0j7" path="res://beings/enemy_path.tscn" id="4_mgbd6"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_411yu")
 
 [node name="Player" parent="." instance=ExtResource("2_4vytu")]
+position = Vector2(305, 191)
+
+[node name="EnemyPath" parent="." instance=ExtResource("4_mgbd6")]
+position = Vector2(511, 27)

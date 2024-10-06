@@ -1,11 +1,10 @@
-extends CharacterBody2D
+extends Area2D
 
 @export var move_speed: int = 500
 
-func _ready() -> void:
-	# Create path
+enum EnemyType { SQUID }
 
-	pass
+var enemy_type: EnemyType
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
