@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b0ku6bklyw35r" path="res://beings/tiny_creature_1.tscn" id="2_cblug"]
 
 [sub_resource type="Curve2D" id="Curve2D_5ll0l"]
+resource_local_to_scene = true
 
 [node name="EnemyPath" type="Path2D"]
 curve = SubResource("Curve2D_5ll0l")

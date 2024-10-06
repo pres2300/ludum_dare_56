@@ -7,14 +7,14 @@ func create_path() -> void:
 
 	# TODO: randomize
 	var zigzag_amplitude: float = 40.0  # How far to zig-zag from the main line
-	var zigzag_frequency: float = 10   # How frequent the zig-zags are
+	var zigzag_frequency: float = 5    # How frequent the zig-zags are
 	var curve_length: float = 800.0     # How long the curve is (including extension beyond the target)
-	var segments: int = 100            # Number of segments in the curve
+	var segments: int = 100             # Number of segments in the curve
 
 	# Get player position for target point
 	var target_point: Vector2 = get_tree().get_first_node_in_group("Player").global_position
 
-	var start_point: Vector2 = position # May need this outside of ready? Move to a `move` function?
+	var start_point: Vector2 = position
 
 	# Direction vector form the start to the target
 	var direction: Vector2 = (target_point - start_point).normalized()
@@ -37,6 +37,6 @@ func _ready() -> void:
 	create_path()
 
 func _process(delta: float) -> void:
-	path_follow.progress_ratio += 0.05*delta
+	path_follow.progress_ratio += 0.20*delta
 	if path_follow.progress_ratio >= 1 or path_follow.get_child_count() == 0:
 		queue_free()

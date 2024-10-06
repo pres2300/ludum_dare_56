@@ -9,7 +9,7 @@
 motion_mode = 1
 script = ExtResource("1_swsvb")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["Player"]]
 texture = ExtResource("2_umdon")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
