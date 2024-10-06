@@ -1,4 +1,6 @@
 extends Node
 
 func _ready() -> void:
-	pass
+	# Center the player
+	var center: Vector2 = get_viewport().get_visible_rect().size/2
+	$Player.position = center
