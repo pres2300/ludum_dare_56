@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://0dmx381jgmbm"]
+
+[ext_resource type="PackedScene" uid="uid://hdyrl2t3utkv" path="res://beings/enemy_base.tscn" id="1_63mqo"]
+[ext_resource type="Texture2D" uid="uid://yq0rxqy1tiru" path="res://art_assets/tiny_creatures/tiny_creature2.png" id="2_257rv"]
+[ext_resource type="Script" path="res://beings/tiny_creature_2.gd" id="2_r3ge4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rmp0l"]
+radius = 5.0
+height = 14.0
+
+[node name="tiny_creature_2" instance=ExtResource("1_63mqo")]
+script = ExtResource("2_r3ge4")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_257rv")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CapsuleShape2D_rmp0l")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="2"]
+scale = Vector2(0.5, 0.6)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
