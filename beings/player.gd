@@ -22,6 +22,9 @@ func is_dead() -> bool:
 func get_input() -> Vector2:
 	return Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 
+func revive() -> void:
+	health = 5
+
 func change_texture(current_health: int) -> void:
 	health = current_health
 	match health:
