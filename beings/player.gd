@@ -5,6 +5,7 @@ extends CharacterBody2D
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var damage_taken_sound: AudioStreamPlayer2D = $DamageTakenSound
 
 signal dead
 
@@ -48,7 +49,9 @@ func change_texture(current_health: int) -> void:
 			dead.emit()
 
 func take_damage() -> void:
-	health -= 1
+	if not is_dead():
+		health -= 1
+		damage_taken_sound.play()
 
 func _physics_process(_delta: float) -> void:
 	if is_dead():

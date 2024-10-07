@@ -8,7 +8,6 @@ extends Path2D
 func set_difficulty_modifier(value: int) -> void:
 	difficulty_modifier = value
 	move_ratio = move_ratio + (float(difficulty_modifier)*0.05)
-	print(move_ratio)
 
 func create_path() -> void:
 	var points: PackedVector2Array = []

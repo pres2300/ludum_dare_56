@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdfo216a617rc"]
+[gd_scene load_steps=5 format=3 uid="uid://bdfo216a617rc"]
 
 [ext_resource type="Script" path="res://beings/player.gd" id="1_swsvb"]
 [ext_resource type="Texture2D" uid="uid://b55r8jbxhqoib" path="res://art_assets/little_guy/little_guy1.png" id="2_umdon"]
+[ext_resource type="AudioStream" uid="uid://jf6eybyayw7n" path="res://art_assets/sounds/damage_taken_4.mp3" id="3_jgwm2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jiibq"]
 
@@ -15,3 +16,6 @@ texture = ExtResource("2_umdon")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jiibq")
+
+[node name="DamageTakenSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_jgwm2")

@@ -8,7 +8,6 @@ var direction: Vector2 = Vector2(0,0)
 func set_difficulty_modifier(value: int) -> void:
 	difficulty_modifier = value
 	move_speed = move_speed + (difficulty_modifier*50)
-	print(move_speed)
 
 
 func _ready() -> void:

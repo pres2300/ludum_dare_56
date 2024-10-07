@@ -2,7 +2,8 @@ extends Node
 
 @export var enemy1: PackedScene = null
 @export var enemy2: PackedScene = null
-@export var starting_spawn_time: float = 2.0
+@export var starting_spawn_interval: float = 2.0
+@export var spawn_interval: float = 2.0
 @export var difficulty_modifier: int = 0
 @export var difficulty_interval: int = 10
 
@@ -18,12 +19,16 @@ var screensize: Vector2 = Vector2(640.0, 360.0)
 
 func start_game() -> void:
 	game_time = 0
+	difficulty_modifier = 0
 	hud.score.text = str(game_time)
 	player.revive()
 	game_running = true
 	hud.start.hide()
 	hud.game_over.hide()
 	game_timer.start()
+	spawn_interval = starting_spawn_interval
+	enemy1_timer.wait_time = spawn_interval
+	enemy2_timer.wait_time = spawn_interval
 	enemy1_timer.start()
 	enemy2_timer.start()
 
@@ -32,7 +37,7 @@ func _ready() -> void:
 	var center: Vector2 = screensize/2
 	$Player.position = center
 
-	enemy1_timer.wait_time = starting_spawn_time
+	enemy1_timer.wait_time = spawn_interval
 	enemy1_timer.one_shot = false
 
 	player.dead.connect(_player_dead)
@@ -53,6 +58,10 @@ func _on_game_timer_timeout() -> void:
 	hud.score.text = str(game_time)
 	if game_time % difficulty_interval == 0:
 		difficulty_modifier += 1
+		if spawn_interval > 0.10:
+			spawn_interval = spawn_interval-(float(difficulty_modifier)*0.10)
+			enemy1_timer.wait_time = spawn_interval
+			enemy2_timer.wait_time = spawn_interval
 
 func _on_enemy_1_spawn_timer_timeout() -> void:
 	var enemy_instance: Path2D = enemy1.instantiate()
