@@ -3,6 +3,8 @@ extends Node
 @export var enemy1: PackedScene = null
 @export var enemy2: PackedScene = null
 @export var starting_spawn_time: float = 2.0
+@export var difficulty_modifier: int = 0
+@export var difficulty_interval: int = 10
 
 @onready var enemy1_timer: Timer = $Enemy1SpawnTimer
 @onready var enemy2_timer: Timer = $Enemy2SpawnTimer
@@ -49,13 +51,17 @@ func _player_dead() -> void:
 func _on_game_timer_timeout() -> void:
 	game_time += 1
 	hud.score.text = str(game_time)
+	if game_time % difficulty_interval == 0:
+		difficulty_modifier += 1
 
 func _on_enemy_1_spawn_timer_timeout() -> void:
 	var enemy_instance: Path2D = enemy1.instantiate()
 	enemy_instance.position = Vector2(randf_range(0.0, screensize.x), 0)
+	enemy_instance.difficulty_modifier = difficulty_modifier
 	add_child(enemy_instance)
 
 func _on_enemy_2_spawn_timer_timeout() -> void:
 	var enemy_instance: Area2D = enemy2.instantiate()
 	enemy_instance.position = Vector2(randf_range(0.0, screensize.x), 0)
+	enemy_instance.difficulty_modifier = difficulty_modifier
 	add_child(enemy_instance)

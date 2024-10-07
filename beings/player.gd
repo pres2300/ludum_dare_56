@@ -56,4 +56,5 @@ func _physics_process(_delta: float) -> void:
 
 	var input_direction: Vector2 = get_input()
 	velocity = input_direction*move_speed
+	#move_and_collide(velocity*_delta)
 	move_and_slide()

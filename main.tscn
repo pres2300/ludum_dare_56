@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://fh8sf8nyuy14"]
+[gd_scene load_steps=11 format=3 uid="uid://fh8sf8nyuy14"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_411yu"]
 [ext_resource type="PackedScene" uid="uid://bdfo216a617rc" path="res://beings/player.tscn" id="2_4vytu"]
@@ -6,6 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://0dmx381jgmbm" path="res://beings/tiny_creature_2.tscn" id="3_p17bd"]
 [ext_resource type="PackedScene" uid="uid://b2q033821e0j7" path="res://beings/enemy_path.tscn" id="4_mgbd6"]
 [ext_resource type="Texture2D" uid="uid://c0oqr3p8ip1ic" path="res://art_assets/background.png" id="6_ucc4y"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_x785j"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wy3i4"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u7ax4"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3ctcy"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_411yu")
@@ -28,6 +36,31 @@ position = Vector2(305, 191)
 [node name="Enemy2SpawnTimer" type="Timer" parent="."]
 
 [node name="GameTimer" type="Timer" parent="."]
+
+[node name="Area2D" type="RigidBody2D" parent="."]
+position = Vector2(0, 360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("WorldBoundaryShape2D_x785j")
+
+[node name="Area2D2" type="RigidBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_wy3i4")
+
+[node name="Area2D3" type="RigidBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
+rotation = -3.14159
+shape = SubResource("WorldBoundaryShape2D_u7ax4")
+
+[node name="Area2D4" type="RigidBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
+position = Vector2(640, 0)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_3ctcy")
 
 [connection signal="timeout" from="Enemy1SpawnTimer" to="." method="_on_enemy_1_spawn_timer_timeout"]
 [connection signal="timeout" from="Enemy2SpawnTimer" to="." method="_on_enemy_2_spawn_timer_timeout"]

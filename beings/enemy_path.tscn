@@ -14,3 +14,5 @@ script = ExtResource("1_secnv")
 loop = false
 
 [node name="tiny_creature1" parent="PathFollow2D" instance=ExtResource("2_cblug")]
+collision_layer = 1
+collision_mask = 1

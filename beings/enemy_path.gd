@@ -1,8 +1,14 @@
 extends Path2D
 
 @export var move_ratio: float = 0.20
+@export var difficulty_modifier: int = 0 : set = set_difficulty_modifier
 
 @onready var path_follow: PathFollow2D = $PathFollow2D
+
+func set_difficulty_modifier(value: int) -> void:
+	difficulty_modifier = value
+	move_ratio = move_ratio + (float(difficulty_modifier)*0.05)
+	print(move_ratio)
 
 func create_path() -> void:
 	var points: PackedVector2Array = []
