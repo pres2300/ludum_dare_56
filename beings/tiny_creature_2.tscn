@@ -10,6 +10,7 @@ height = 14.0
 
 [node name="tiny_creature_2" instance=ExtResource("1_63mqo")]
 script = ExtResource("2_r3ge4")
+move_speed = 300
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_257rv")

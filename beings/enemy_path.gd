@@ -1,5 +1,7 @@
 extends Path2D
 
+@export var move_ratio: float = 0.20
+
 @onready var path_follow: PathFollow2D = $PathFollow2D
 
 func create_path() -> void:
@@ -37,6 +39,6 @@ func _ready() -> void:
 	create_path()
 
 func _process(delta: float) -> void:
-	path_follow.progress_ratio += 0.20*delta
+	path_follow.progress_ratio += move_ratio*delta
 	if path_follow.progress_ratio >= 1 or path_follow.get_child_count() == 0:
 		queue_free()

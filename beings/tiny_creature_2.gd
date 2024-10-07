@@ -1,6 +1,7 @@
 extends "res://beings/enemy_base.gd"
 
-var move_speed: int = 500
+@export var move_speed: int = 300
+
 var direction: Vector2 = Vector2(0,0)
 
 func _ready() -> void:
